@@ -136,6 +136,7 @@ Bundle 'vim-scripts/winmanager'
 "Bundle 'Shougo/neocomplete.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'yonchu/accelerated-smooth-scroll'
 
 "Bundle 'bufexplorer.zip'
 "Bundle 'ccvext.vim'
@@ -497,6 +498,19 @@ noremap <c-l> <c-w>l
 "  < neocomplete ²å¼þÅäÖÃ >
 " -----------------------------------------------------------------------------
 let g:neocomplete#enable_at_startup = 1
+
+
+" -----------------------------------------------------------------------------
+"  < syntastic ²å¼þÅäÖÃ >
+" -----------------------------------------------------------------------------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0 
+let g:syntastic_check_on_wq = 0
 
 " -----------------------------------------------------------------------------
 "  < YouCompleteMe ²å¼þÅäÖÃ >
