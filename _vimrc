@@ -137,6 +137,7 @@ Bundle 'vim-scripts/winmanager'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'yonchu/accelerated-smooth-scroll'
+Bundle 'nathanaelkane/vim-indent-guides'
 
 "Bundle 'bufexplorer.zip'
 "Bundle 'ccvext.vim'
@@ -566,3 +567,18 @@ nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<C
 "  < PowerLine 插件配置 >
 " -----------------------------------------------------------------------------
 "let g:Powerline_symbols = 'fancy'
+
+" -----------------------------------------------------------------------------
+"  < vim-indent-guides 插件配置 >
+" -----------------------------------------------------------------------------
+" 随vim自启动
+let g:indent_guides_enable_on_vim_startup=1
+
+" 从第二层开始可视化显示缩进
+let g:indent_guides_start_level=2
+
+" 色块宽度
+let g:indent_guides_guide_size=1
+
+" 快捷键i开/关缩进可视化
+:nmap<silent> <Leader>i <Plug>IndentGuidesToggle
