@@ -582,3 +582,28 @@ let g:indent_guides_guide_size=1
 
 " 快捷键i开/关缩进可视化
 :nmap<silent> <Leader>i <Plug>IndentGuidesToggle
+
+
+
+
+" -----------------------------------------------------------------------------
+"  < PC_LINT 配置 >
+" -----------------------------------------------------------------------------
+"set efm=%f\ \ %l\ \ %c\ \ %m 
+
+" map f4 to run lint
+"map <f4> :call LintProject()<cr>
+
+"use windows default shell
+"set shell=cmd.exe
+
+"function! LintProject()
+"    new "open a new buffer
+"    exec 'silent r! lint-nt c:\lint\vim\std.lnt *.c -b'
+
+    "remove blank line at the top of the file
+"    exe "normal ggdd"       
+"    caddb "add content of the buffer to the quickfix window
+"    close "close the buffer
+"    copen "open quickfix window
+"endfunction
