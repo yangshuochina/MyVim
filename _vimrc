@@ -514,3 +514,8 @@ let g:ycm_filetype_blacklist = {
       \}
 
 " let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
+" -----------------------------------------------------------------------------
+"  < PowerLine ²å¼þÅäÖÃ >
+" -----------------------------------------------------------------------------
+"let g:Powerline_symbols = 'fancy'
