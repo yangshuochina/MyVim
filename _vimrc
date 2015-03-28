@@ -132,6 +132,8 @@ Bundle 'Mark--Karkat'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'OmniCppComplete'
 Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
 Bundle 'taglist.vim'
 Bundle 'vim-scripts/winmanager'
 "Bundle 'Shougo/neocomplete.vim'
@@ -143,8 +145,6 @@ Bundle 'nathanaelkane/vim-indent-guides'
 "Bundle 'bufexplorer.zip'
 "Bundle 'ccvext.vim'
 "Bundle 'Yggdroot/indentLine'
-"Bundle 'scrooloose/nerdcommenter'
-"Bundle 'scrooloose/nerdtree'
 "Bundle 'msanders/snipmate.vim'
 "Bundle 'wesleyche/SrcExpl'
 "Bundle 'std_c.zip'
@@ -288,6 +288,7 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strf
 set guifont=Consolas:h11 " :cANSI
 "set guifont=Inconsolata:h12
 "set guifont=Courier_New:h10
+"set guifont=Source_Code_Pro:h10
 
 set nowrap                                            " 设置不自动换行
 set shortmess=atI                                     " 去掉欢迎界面
