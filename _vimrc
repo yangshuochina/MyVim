@@ -127,6 +127,7 @@ Bundle 'gmarik/vundle'
 " 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
 Bundle 'a.vim'
 Bundle 'Align'
+Bundle 'kien/ctrlp.vim'
 Bundle 'Mark--Karkat'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'OmniCppComplete'
@@ -136,16 +137,14 @@ Bundle 'vim-scripts/winmanager'
 "Bundle 'Shougo/neocomplete.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'yonchu/accelerated-smooth-scroll'
+"Bundle 'yonchu/accelerated-smooth-scroll'
 Bundle 'nathanaelkane/vim-indent-guides'
 
 "Bundle 'bufexplorer.zip'
 "Bundle 'ccvext.vim'
 "Bundle 'Yggdroot/indentLine'
-"Bundle 'Shougo/neocomplete'
 "Bundle 'scrooloose/nerdcommenter'
 "Bundle 'scrooloose/nerdtree'
-"Bundle 'Lokaltog/vim-powerline'
 "Bundle 'msanders/snipmate.vim'
 "Bundle 'wesleyche/SrcExpl'
 "Bundle 'std_c.zip'
@@ -498,7 +497,7 @@ noremap <c-l> <c-w>l
 " -----------------------------------------------------------------------------
 "  < neocomplete 插件配置 >
 " -----------------------------------------------------------------------------
-let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_at_startup = 0
 
 
 " -----------------------------------------------------------------------------
@@ -510,8 +509,23 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0 
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+if (g:iswindows)
+    let g:syntastic_cpp_include_dirs = ['D:\\cygwin\\usr\\include']
+else
+    let g:syntastic_cpp_include_dirs = ['/usr/include/']
+endif
+
+let g:syntastic_cpp_remove_include_errors = 1
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
+"set error or warning signs
+"let g:syntastic_error_symbol = '?'
+"let g:syntastic_warning_symbol = '?'
+"whether to show balloons
+let g:syntastic_enable_balloons = 1
 
 " -----------------------------------------------------------------------------
 "  < YouCompleteMe 插件配置 >
@@ -531,15 +545,16 @@ let g:ycm_filetype_blacklist = {
 " let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
 " 补全功能在注释中同样有效  
-let g:ycm_complete_in_comments=1  
+let g:ycm_complete_in_comments=1 
 
-" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示  
-let g:ycm_confirm_extra_conf=0  
+" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示 
+let g:ycm_confirm_extra_conf=0      
 
-" 开启 YCM 基于标签引擎  
+" 开启 YCM 基于标签引擎 
 let g:ycm_collect_identifiers_from_tags_files=1  
 
-" 引入 C++ 标准库tags，这个没有也没关系，只要.ycm_extra_conf.py文件中指定了正确的标准库路径  
+" 引入 C++ 标准库tags，这个没有也没关系，
+" 只要.ycm_extra_conf.py文件中指定了正确的标准库路径  
 set tags+=/data/misc/software/misc./vim/stdcpp.tags  
 
 " YCM 集成 OmniCppComplete 补全引擎，设置其快捷键  
@@ -582,7 +597,6 @@ let g:indent_guides_guide_size=1
 
 " 快捷键i开/关缩进可视化
 :nmap<silent> <Leader>i <Plug>IndentGuidesToggle
-
 
 
 
