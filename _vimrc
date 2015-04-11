@@ -141,6 +141,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-powerline'
 "Bundle 'yonchu/accelerated-smooth-scroll'
 Bundle 'nathanaelkane/vim-indent-guides'
+"Bundle 'altercation/vim-colors-solarized'
 
 "Bundle 'bufexplorer.zip'
 "Bundle 'ccvext.vim'
@@ -307,6 +308,7 @@ if g:isGUI
     "colorscheme molikai
     colorscheme desert
     "colorscheme solarized
+    "colorscheme blue
     "colorscheme darkblue
     "color ron
 else
@@ -314,7 +316,7 @@ else
 endif
 
 " 设置背景颜色
-set background=dark
+"set background=dark
 
 " 显示/隐藏菜单栏、工具栏、滚动条，可用 Ctrl + F11 切换
 if g:isGUI
