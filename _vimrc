@@ -141,7 +141,8 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-powerline'
 "Bundle 'yonchu/accelerated-smooth-scroll'
 Bundle 'nathanaelkane/vim-indent-guides'
-"Bundle 'altercation/vim-colors-solarized'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-fugitive'
 
 "Bundle 'bufexplorer.zip'
 "Bundle 'ccvext.vim'
@@ -303,20 +304,28 @@ if g:isGUI
 endif
 
 " 设置代码配色方案
+"let g:solarized_termcolors=256
 if g:isGUI
-    "colorscheme Tomorrow-Night-Eighties               "Gvim配色方案
+    "Gvim配色方案
+    set background=light
+    "set background=dark
+
+    "colorscheme Tomorrow-Night-Eighties               
     "colorscheme molikai
-    colorscheme desert
-    "colorscheme solarized
+    "colorscheme desert
+    colorscheme solarized
     "colorscheme blue
     "colorscheme darkblue
     "color ron
-else
-    colorscheme Tomorrow-Night-Eighties               "终端配色方案
+else 
+    "终端配色方案
+    "set background=light
+    set background=dark
+
+    colorscheme solarized
+    "colorscheme Tomorrow-Night-Eighties              
 endif
 
-" 设置背景颜色
-"set background=dark
 
 " 显示/隐藏菜单栏、工具栏、滚动条，可用 Ctrl + F11 切换
 if g:isGUI
