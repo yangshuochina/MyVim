@@ -144,6 +144,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-fugitive'
 Bundle 'klen/python-mode'
+"Bundle 'jistr/vim-nerdtree-tabs'
 
 "Bundle 'bufexplorer.zip'
 "Bundle 'ccvext.vim'
@@ -167,7 +168,7 @@ Bundle 'klen/python-mode'
 "Bundle 'ervandew/supertab'                "有时与 snipmate 插件冲突
 "Bundle 'TxtBrowser'
 "Plugin 'exvim/ex-minibufexpl'                "exvim插件之一。修复BUG
-
+Plugin 'flazz/vim-colorschemes'
 
 " -----------------------------------------------------------------------------
 "  < 编码配置 >
@@ -239,7 +240,7 @@ imap <c-h> <Left>
 imap <c-l> <Right>
 
 " 启用每行超过80列的字符提示（字体变蓝并加下划线），不启用就注释掉
-au BufWinEnter * let w:m2=matchadd('Underlined', '\%>' . 80 . 'v.\+', -1)
+" au BufWinEnter * let w:m2=matchadd('Underlined', '\%>' . 80 . 'v.\+', -1)
 "------------------------------自定义操作-----------------------------------------------
 " 替换函数。参数说明：
 " confirm：是否替换前逐一确认
@@ -288,10 +289,10 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strf
 " 设置字体类型和字体大小
 "set guifont=YaHei_Consolas_Hybrid:h10               " 设置字体:字号（字体名称空格用下划线代替）
 "set guifont=DejaVu_Sans_Mono:h14
-set guifont=Consolas:h11 " :cANSI
+"set guifont=Consolas:h11 " :cANSI
 "set guifont=Inconsolata:h12
 "set guifont=Courier_New:h10
-"set guifont=Source_Code_Pro:h10
+set guifont=Source_Code_Pro:h11
 
 set nowrap                                            " 设置不自动换行
 set shortmess=atI                                     " 去掉欢迎界面
@@ -308,16 +309,18 @@ endif
 "let g:solarized_termcolors=256
 if g:isGUI
     "Gvim配色方案
-    set background=light
-    "set background=dark
+    "set background=light
+    set background=dark
 
     "colorscheme Tomorrow-Night-Eighties               
     "colorscheme molikai
     "colorscheme desert
-    colorscheme solarized
+    "colorscheme solarized
     "colorscheme blue
     "colorscheme darkblue
     "color ron
+    "color evening
+    color biogoo
 else 
     "终端配色方案
     "set background=light
@@ -362,7 +365,7 @@ set helplang=cn
 set nobackup
 set nowb
 set noswapfile
-
+set noundofile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -458,16 +461,15 @@ autocmd BufNewFile * normal G
 " :AS    ---切换头文件并水平分割窗口
 nnoremap <silent> <F12> :A<CR> 
 
-
-
 """"""""""""""""""""""""""""""
 " Tag list (ctags)
 """"""""""""""""""""""""""""""
-"if MySys() == "windows"                " 设定windows系统中ctags程序的位置
-    let Tlist_Ctags_Cmd = 'ctags'
-"elseif MySys() == "linux"              " 设定windows系统中ctags程序的位置
- "   let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-"endif
+if g:iswindows == 1
+    let Tlist_Ctags_Cmd = 'ctags'               " 设定Windows系统ctags程序位置，需要将ctags加入path变量
+else
+    let Tlist_Ctags_Cmd = '/usr/bin/ctags'      " 非Windows系统设定ctags程序位置
+endif
+
 let Tlist_Show_One_File = 1             " 不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow = 1           " 如果taglist窗口是最后一个窗口，则退出vim
 let Tlist_Use_Right_Window = 1          " 在右侧窗口中显示taglist窗口 
