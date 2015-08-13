@@ -128,7 +128,7 @@ Bundle 'gmarik/vundle'
 Bundle 'a.vim'
 Bundle 'Align'
 Bundle 'kien/ctrlp.vim'
-Bundle 'Mark--Karkat'
+"Bundle 'Mark--Karkat'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'OmniCppComplete'
 Bundle 'scrooloose/syntastic'
@@ -144,7 +144,8 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-fugitive'
 Bundle 'klen/python-mode'
-"Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'godlygeek/tabular'
 
 "Bundle 'bufexplorer.zip'
 "Bundle 'ccvext.vim'
@@ -169,6 +170,231 @@ Bundle 'klen/python-mode'
 "Bundle 'TxtBrowser'
 "Plugin 'exvim/ex-minibufexpl'                "exvim插件之一。修复BUG
 Plugin 'flazz/vim-colorschemes'
+
+" =============================================================================
+"                          << 以下为常用插件配置 >>
+" =============================================================================
+
+" -----------------------------------------------------------------------------
+"  < a.vim 插件配置 >
+" -----------------------------------------------------------------------------
+" 用于切换C/C++头文件
+" :A     ---切换头文件并独占整个窗口
+" :AV    ---切换头文件并垂直分割窗口
+" :AS    ---切换头文件并水平分割窗口
+nnoremap <silent> <F12> :A<CR> 
+
+""""""""""""""""""""""""""""""
+" Tag list (ctags)
+""""""""""""""""""""""""""""""
+if g:iswindows == 1
+    let Tlist_Ctags_Cmd = 'ctags'               " 设定Windows系统ctags程序位置，需要将ctags加入path变量
+else
+    let Tlist_Ctags_Cmd = '/usr/bin/ctags'      " 非Windows系统设定ctags程序位置
+endif
+
+let Tlist_Show_One_File = 1             " 不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exit_OnlyWindow = 1           " 如果taglist窗口是最后一个窗口，则退出vim
+let Tlist_Use_Right_Window = 1          " 在右侧窗口中显示taglist窗口 
+" let Tlist_Auto_Open = 1		" 自动打开Tlist
+
+set tags=tags;				" 自动从当前目录查找tags
+set autochdir 				" 自动依次从上层目录查找
+
+" 快捷键F9生成一个tags文件
+nmap <F9> <Esc>:!ctags -R *<CR> 
+
+" 快捷键F8代开Tlist
+nmap <F8> <Esc>:Tlist <CR>
+
+""""""""""""""""""""""""""""""
+" winManager
+""""""""""""""""""""""""""""""
+let g:winManagerWindowLayout='FileExplorer' "|TagList'
+"nmap wm :WMToggle<CR>
+nmap <F7> <Esc>:WMToggle<CR>
+
+" -----------------------------------------------------------------------------
+"  < MiniBufExplorer 插件配置 >
+" -----------------------------------------------------------------------------
+" 快速浏览和操作Buffer
+" 主要用于同时打开多个文件并相与切换
+
+"let g:miniBufExplMapWindowNavArrows = 1     " 用Ctrl加方向键切换到上下左右的窗口中去
+"let g:miniBufExplMapWindowNavVim = 1        " 用<C-k,j,h,l>切换到上下左右的窗口中去
+let g:miniBufExplMapCTabSwitchBufs = 1       " 功能增强（不过好像只有在Windows中才有用）
+                                             " <C-Tab> 向前循环切换到每个buffer上,并在但前窗口打开
+                                             " <C-S-Tab> 向后循环切换到每个buffer上,并在当前窗口打开
+
+" 在不使用 MiniBufExplorer 插件时也可用<C-k,j,h,l>切换到上下左右的窗口中去
+noremap <c-k> <c-w>k
+noremap <c-j> <c-w>j
+noremap <c-h> <c-w>h
+noremap <c-l> <c-w>l
+
+" -----------------------------------------------------------------------------
+"  < neocomplete 插件配置 >
+" -----------------------------------------------------------------------------
+let g:neocomplete#enable_at_startup = 0
+
+
+" -----------------------------------------------------------------------------
+"  < syntastic 插件配置 >
+" -----------------------------------------------------------------------------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+if (g:iswindows)
+    let g:syntastic_cpp_include_dirs = ['D:\\cygwin\\usr\\include']
+else
+    let g:syntastic_cpp_include_dirs = ['/usr/include/']
+endif
+
+let g:syntastic_cpp_remove_include_errors = 1
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
+"set error or warning signs
+"let g:syntastic_error_symbol = '?'
+"let g:syntastic_warning_symbol = '?'
+"whether to show balloons
+let g:syntastic_enable_balloons = 1
+
+" -----------------------------------------------------------------------------
+"  < YouCompleteMe 插件配置 >
+" -----------------------------------------------------------------------------
+" 以下文件格式上屏蔽 YCM
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'gitcommit' : 1,
+      \}
+
+" let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
+" 补全功能在注释中同样有效  
+let g:ycm_complete_in_comments=1 
+
+" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示 
+let g:ycm_confirm_extra_conf=0      
+
+" 开启 YCM 基于标签引擎 
+let g:ycm_collect_identifiers_from_tags_files=1  
+
+" 引入 C++ 标准库tags，这个没有也没关系，
+" 只要.ycm_extra_conf.py文件中指定了正确的标准库路径  
+set tags+=/data/misc/software/misc./vim/stdcpp.tags  
+
+" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键  
+inoremap <leader>; <C-x><C-o>  
+
+" 补全内容不以分割子窗口形式出现，只显示补全列表  
+set completeopt-=preview  
+
+" 从第一个键入字符就开始罗列匹配项  
+let g:ycm_min_num_of_chars_for_completion=1  
+
+" 禁止缓存匹配项，每次都重新生成匹配项  
+let g:ycm_cache_omnifunc=0  
+
+" 语法关键字补全              
+let g:ycm_seed_identifiers_with_syntax=1  
+
+" 修改对C函数的补全快捷键，默认是CTRL + space，修改为ALT + ;  
+let g:ycm_key_invoke_completion = '<M-;>'  
+
+" 设置转到定义处的快捷键为ALT + G，这个功能非常赞  
+nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>  
+
+" -----------------------------------------------------------------------------
+"  < PowerLine 插件配置 >
+" -----------------------------------------------------------------------------
+"let g:Powerline_symbols = 'fancy'
+
+" -----------------------------------------------------------------------------
+"  < vim-indent-guides 插件配置 >
+" -----------------------------------------------------------------------------
+" 随vim自启动
+let g:indent_guides_enable_on_vim_startup=1
+
+" 从第二层开始可视化显示缩进
+let g:indent_guides_start_level=2
+
+" 色块宽度
+let g:indent_guides_guide_size=1
+
+" 快捷键i开/关缩进可视化
+:nmap<silent> <Leader>i <Plug>IndentGuidesToggle
+
+" -----------------------------------------------------------------------------
+"  < NerdTree 插件配置 >
+" -----------------------------------------------------------------------------
+map <F2> :NERDTreeToggle<CR>
+
+" -----------------------------------------------------------------------------
+"  < vim-nerdtree-tabs 插件配置 >
+" -----------------------------------------------------------------------------
+let g:nerdtree_tabs_open_on_console_startup=1       "设置打开vim的时候默认打开目录树
+map <leader>n <plug>NERDTreeTabsToggle <CR>         "设置打开目录树的快捷键
+
+" -----------------------------------------------------------------------------
+"  < Python-mode 插件配置 >
+" -----------------------------------------------------------------------------
+" Python-mode
+" Activate rope
+" Keys:
+" K             Show python docs
+" <Ctrl-Space>  Rope autocomplete
+" <Ctrl-c>g     Rope goto definition
+" <Ctrl-c>d     Rope show documentation
+" <Ctrl-c>f     Rope find occurrences
+" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+" [[            Jump on previous class or function (normal, visual, operator modes)
+" ]]            Jump on next class or function (normal, visual, operator modes)
+" [M            Jump on previous class or method (normal, visual, operator modes)
+" ]M            Jump on next class or method (normal, visual, operator modes)
+let g:pymode_rope = 1
+
+" Documentation
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+
+"Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" Enable breakpoints plugin
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<leader>b'
+
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code
+let g:pymode_folding = 0
+
+" -----------------------------------------------------------------------------
+"  < tabular 插件配置 >
+" -----------------------------------------------------------------------------
+":let g:tabular_loaded = 1
 
 " -----------------------------------------------------------------------------
 "  < 编码配置 >
@@ -448,220 +674,6 @@ autocmd BufNewFile * normal G
 
 
 
-" =============================================================================
-"                          << 以下为常用插件配置 >>
-" =============================================================================
-
-" -----------------------------------------------------------------------------
-"  < a.vim 插件配置 >
-" -----------------------------------------------------------------------------
-" 用于切换C/C++头文件
-" :A     ---切换头文件并独占整个窗口
-" :AV    ---切换头文件并垂直分割窗口
-" :AS    ---切换头文件并水平分割窗口
-nnoremap <silent> <F12> :A<CR> 
-
-""""""""""""""""""""""""""""""
-" Tag list (ctags)
-""""""""""""""""""""""""""""""
-if g:iswindows == 1
-    let Tlist_Ctags_Cmd = 'ctags'               " 设定Windows系统ctags程序位置，需要将ctags加入path变量
-else
-    let Tlist_Ctags_Cmd = '/usr/bin/ctags'      " 非Windows系统设定ctags程序位置
-endif
-
-let Tlist_Show_One_File = 1             " 不同时显示多个文件的tag，只显示当前文件的
-let Tlist_Exit_OnlyWindow = 1           " 如果taglist窗口是最后一个窗口，则退出vim
-let Tlist_Use_Right_Window = 1          " 在右侧窗口中显示taglist窗口 
-" let Tlist_Auto_Open = 1		" 自动打开Tlist
-
-set tags=tags;				" 自动从当前目录查找tags
-set autochdir 				" 自动依次从上层目录查找
-
-" 快捷键F9生成一个tags文件
-nmap <F9> <Esc>:!ctags -R *<CR> 
-
-" 快捷键F8代开Tlist
-nmap <F8> <Esc>:Tlist <CR>
-
-""""""""""""""""""""""""""""""
-" winManager
-""""""""""""""""""""""""""""""
-let g:winManagerWindowLayout='FileExplorer' "|TagList'
-"nmap wm :WMToggle<CR>
-nmap <F7> <Esc>:WMToggle<CR>
-
-" -----------------------------------------------------------------------------
-"  < MiniBufExplorer 插件配置 >
-" -----------------------------------------------------------------------------
-" 快速浏览和操作Buffer
-" 主要用于同时打开多个文件并相与切换
-
-"let g:miniBufExplMapWindowNavArrows = 1     " 用Ctrl加方向键切换到上下左右的窗口中去
-"let g:miniBufExplMapWindowNavVim = 1        " 用<C-k,j,h,l>切换到上下左右的窗口中去
-let g:miniBufExplMapCTabSwitchBufs = 1       " 功能增强（不过好像只有在Windows中才有用）
-                                             " <C-Tab> 向前循环切换到每个buffer上,并在但前窗口打开
-                                             " <C-S-Tab> 向后循环切换到每个buffer上,并在当前窗口打开
-
-" 在不使用 MiniBufExplorer 插件时也可用<C-k,j,h,l>切换到上下左右的窗口中去
-noremap <c-k> <c-w>k
-noremap <c-j> <c-w>j
-noremap <c-h> <c-w>h
-noremap <c-l> <c-w>l
-
-" -----------------------------------------------------------------------------
-"  < neocomplete 插件配置 >
-" -----------------------------------------------------------------------------
-let g:neocomplete#enable_at_startup = 0
-
-
-" -----------------------------------------------------------------------------
-"  < syntastic 插件配置 >
-" -----------------------------------------------------------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-if (g:iswindows)
-    let g:syntastic_cpp_include_dirs = ['D:\\cygwin\\usr\\include']
-else
-    let g:syntastic_cpp_include_dirs = ['/usr/include/']
-endif
-
-let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
-"set error or warning signs
-"let g:syntastic_error_symbol = '?'
-"let g:syntastic_warning_symbol = '?'
-"whether to show balloons
-let g:syntastic_enable_balloons = 1
-
-" -----------------------------------------------------------------------------
-"  < YouCompleteMe 插件配置 >
-" -----------------------------------------------------------------------------
-" 以下文件格式上屏蔽 YCM
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'gitcommit' : 1,
-      \}
-
-" let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-
-" 补全功能在注释中同样有效  
-let g:ycm_complete_in_comments=1 
-
-" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示 
-let g:ycm_confirm_extra_conf=0      
-
-" 开启 YCM 基于标签引擎 
-let g:ycm_collect_identifiers_from_tags_files=1  
-
-" 引入 C++ 标准库tags，这个没有也没关系，
-" 只要.ycm_extra_conf.py文件中指定了正确的标准库路径  
-set tags+=/data/misc/software/misc./vim/stdcpp.tags  
-
-" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键  
-inoremap <leader>; <C-x><C-o>  
-
-" 补全内容不以分割子窗口形式出现，只显示补全列表  
-set completeopt-=preview  
-
-" 从第一个键入字符就开始罗列匹配项  
-let g:ycm_min_num_of_chars_for_completion=1  
-
-" 禁止缓存匹配项，每次都重新生成匹配项  
-let g:ycm_cache_omnifunc=0  
-
-" 语法关键字补全              
-let g:ycm_seed_identifiers_with_syntax=1  
-
-" 修改对C函数的补全快捷键，默认是CTRL + space，修改为ALT + ;  
-let g:ycm_key_invoke_completion = '<M-;>'  
-
-" 设置转到定义处的快捷键为ALT + G，这个功能非常赞  
-nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>  
-
-" -----------------------------------------------------------------------------
-"  < PowerLine 插件配置 >
-" -----------------------------------------------------------------------------
-"let g:Powerline_symbols = 'fancy'
-
-" -----------------------------------------------------------------------------
-"  < vim-indent-guides 插件配置 >
-" -----------------------------------------------------------------------------
-" 随vim自启动
-let g:indent_guides_enable_on_vim_startup=1
-
-" 从第二层开始可视化显示缩进
-let g:indent_guides_start_level=2
-
-" 色块宽度
-let g:indent_guides_guide_size=1
-
-" 快捷键i开/关缩进可视化
-:nmap<silent> <Leader>i <Plug>IndentGuidesToggle
-
-" -----------------------------------------------------------------------------
-"  < NerdTree 插件配置 >
-" -----------------------------------------------------------------------------
-map <F2> :NERDTreeToggle<CR>
-
-
-" -----------------------------------------------------------------------------
-"  < Python-mode 插件配置 >
-" -----------------------------------------------------------------------------
-" Python-mode
-" Activate rope
-" Keys:
-" K             Show python docs
-" <Ctrl-Space>  Rope autocomplete
-" <Ctrl-c>g     Rope goto definition
-" <Ctrl-c>d     Rope show documentation
-" <Ctrl-c>f     Rope find occurrences
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-" [[            Jump on previous class or function (normal, visual, operator modes)
-" ]]            Jump on next class or function (normal, visual, operator modes)
-" [M            Jump on previous class or method (normal, visual, operator modes)
-" ]M            Jump on next class or method (normal, visual, operator modes)
-let g:pymode_rope = 1
-
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
-
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
-" Auto check on save
-let g:pymode_lint_write = 1
-
-" Support virtualenv
-let g:pymode_virtualenv = 1
-
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_bind = '<leader>b'
-
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
-" Don't autofold code
-let g:pymode_folding = 0
 
 " -----------------------------------------------------------------------------
 "  < PC_LINT 配置 >
@@ -739,7 +751,9 @@ func! CompileRunGcc()
         endif
     endif
 endfunc
-"C,C++的调试
+
+
+"  C,C++的调试
 map <c-F8> :call Rungdb()<CR>
 func! Rungdb()
 	exec "w"
