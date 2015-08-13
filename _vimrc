@@ -146,6 +146,12 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'klen/python-mode'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'godlygeek/tabular'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ervandew/supertab'                "有时与 snipmate 插件冲突
+Plugin 'garbas/vim-snipmate'        " forked from msanders/snipmate.vim
+"Bundle 'vim-scripts/vim-addon-mw-utils'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
 
 "Bundle 'bufexplorer.zip'
 "Bundle 'ccvext.vim'
@@ -166,10 +172,8 @@ Bundle 'godlygeek/tabular'
 "Bundle 'fholgado/minibufexpl.vim'         "好像与 Vundle 插件有一些冲突
 "Bundle 'Shougo/neocomplcache.vim'
 "Bundle 'repeat.vim'
-"Bundle 'ervandew/supertab'                "有时与 snipmate 插件冲突
 "Bundle 'TxtBrowser'
 "Plugin 'exvim/ex-minibufexpl'                "exvim插件之一。修复BUG
-Plugin 'flazz/vim-colorschemes'
 
 " =============================================================================
 "                          << 以下为常用插件配置 >>
@@ -344,8 +348,15 @@ map <F2> :NERDTreeToggle<CR>
 " -----------------------------------------------------------------------------
 "  < vim-nerdtree-tabs 插件配置 >
 " -----------------------------------------------------------------------------
-let g:nerdtree_tabs_open_on_console_startup=1       "设置打开vim的时候默认打开目录树
-map <leader>n <plug>NERDTreeTabsToggle <CR>         "设置打开目录树的快捷键
+"let g:nerdtree_tabs_open_on_console_startup=1       "设置打开vim的时候默认打开目录树
+"map <leader>n <plug>NERDTreeTabsToggle <CR>         "设置打开目录树的快捷键
+
+" -----------------------------------------------------------------------------
+"  < snipmate 插件配置 >
+" -----------------------------------------------------------------------------
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 
 " -----------------------------------------------------------------------------
 "  < Python-mode 插件配置 >
