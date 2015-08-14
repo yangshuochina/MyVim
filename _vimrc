@@ -147,11 +147,12 @@ Bundle 'klen/python-mode'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'godlygeek/tabular'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'ervandew/supertab'                "有时与 snipmate 插件冲突
-Plugin 'garbas/vim-snipmate'        " forked from msanders/snipmate.vim
+
+"Plugin 'ervandew/supertab'                 "有时与 snipmate 插件冲突(YCM具备这个功能)
+"Plugin 'garbas/vim-snipmate'               " forked from msanders/snipmate.vim
 "Bundle 'vim-scripts/vim-addon-mw-utils'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
+"Plugin 'MarcWeber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
 
 "Bundle 'bufexplorer.zip'
 "Bundle 'ccvext.vim'
