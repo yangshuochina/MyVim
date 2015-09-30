@@ -109,7 +109,10 @@ endif
 " 
 " 安装bundle命令：
 " git clone https://github.com/gmarik/vundle "C:\Program Files\Vim\vimfiles\bundle\vundle" 
-
+" 
+" If you want to put vim in C disk root dir, you can use bundle install command below:
+" git clone https://github.com/gmarik/vundle "C:\Vim\vimfiles\bundle\vundle" 
+"
 set nocompatible                     " 禁用 Vi 兼容模式
 filetype off                         " 禁用文件类型侦测
 
@@ -141,7 +144,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-powerline'
 "Bundle 'yonchu/accelerated-smooth-scroll'
 Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'altercation/vim-colors-solarized'
+"Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-fugitive'
 Bundle 'klen/python-mode'
 Bundle 'jistr/vim-nerdtree-tabs'
