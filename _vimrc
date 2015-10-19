@@ -352,10 +352,10 @@ map <F2> :NERDTreeToggle<CR>
 " -----------------------------------------------------------------------------
 "  < vim-nerdtree-tabs 插件配置 >
 " -----------------------------------------------------------------------------
-"let g:nerdtree_tabs_open_on_console_startup=1       "设置打开vim的时候默认打开目录树
+let g:nerdtree_tabs_open_on_console_startup=0       "设置打开vim的时候默认打开目录树
 "map <leader>n <plug>NERDTreeTabsToggle <CR>         "设置打开目录树的快捷键
-let g:nerdtree_tabs_open_on_gui_startup = 0
 " -----------------------------------------------------------------------------
+
 "  < snipmate 插件配置 >
 " -----------------------------------------------------------------------------
 let g:snipMate = {}
@@ -525,15 +525,18 @@ set cursorline                                        " 突出显示当前行
 set ruler                                             " 显示标尺
 set showcmd                                           " 输入的命令显示出来，看的清楚些
 set scrolloff=3                                       " 光标移动到buffer的顶部和底部时保持3行距离 
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
+
+" Use PowerLine plugin, so ignore following settings.
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 
 " 设置字体类型和字体大小
 "set guifont=YaHei_Consolas_Hybrid:h10               " 设置字体:字号（字体名称空格用下划线代替）
-"set guifont=DejaVu_Sans_Mono:h14
-"set guifont=Consolas:h11 " :cANSI
+"set guifont=DejaVu_Sans_Mono:h11
+set guifont=Consolas:h11 " :cANSI
 "set guifont=Inconsolata:h12
 "set guifont=Courier_New:h10
-set guifont=Source_Code_Pro:h11
+"set guifont=Source_Code_Pro:h10   ":b
+"set guifont=Monospace:h10
 
 set nowrap                                            " 设置不自动换行
 set shortmess=atI                                     " 去掉欢迎界面
