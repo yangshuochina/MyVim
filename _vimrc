@@ -150,6 +150,7 @@ Bundle 'klen/python-mode'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'godlygeek/tabular'
 Plugin 'flazz/vim-colorschemes'
+" Plugin 'jeaye/color_coded'
 
 "Plugin 'ervandew/supertab'                 "有时与 snipmate 插件冲突(YCM具备这个功能)
 "Plugin 'garbas/vim-snipmate'               " forked from msanders/snipmate.vim
@@ -532,10 +533,10 @@ set scrolloff=3                                       " 光标移动到buffer的顶部和
 " 设置字体类型和字体大小
 "set guifont=YaHei_Consolas_Hybrid:h10               " 设置字体:字号（字体名称空格用下划线代替）
 "set guifont=DejaVu_Sans_Mono:h11
-set guifont=Consolas:h11 " :cANSI
+"set guifont=Consolas:h11 " :cANSI
 "set guifont=Inconsolata:h12
 "set guifont=Courier_New:h10
-"set guifont=Source_Code_Pro:h10   ":b
+set guifont=Source_Code_Pro:h10   ":b
 "set guifont=Monospace:h10
 
 set nowrap                                            " 设置不自动换行
