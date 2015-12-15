@@ -355,6 +355,7 @@ map <F2> :NERDTreeToggle<CR>
 " -----------------------------------------------------------------------------
 let g:nerdtree_tabs_open_on_console_startup=0       "设置打开vim的时候默认打开目录树
 "map <leader>n <plug>NERDTreeTabsToggle <CR>         "设置打开目录树的快捷键
+let g:nerdtree_tabs_open_on_gui_startup = 1
 " -----------------------------------------------------------------------------
 
 "  < snipmate 插件配置 >
@@ -535,9 +536,11 @@ set scrolloff=3                                       " 光标移动到buffer的顶部和
 "set guifont=DejaVu_Sans_Mono:h11
 "set guifont=Consolas:h11 " :cANSI
 "set guifont=Inconsolata:h12
-"set guifont=Courier_New:h10
-set guifont=Source_Code_Pro:h10   ":b
+set guifont=Courier_New:h10
+"set guifont=Source_Code_Pro:h10   ":b
 "set guifont=Monospace:h10
+
+
 
 set nowrap                                            " 设置不自动换行
 set shortmess=atI                                     " 去掉欢迎界面
