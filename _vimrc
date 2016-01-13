@@ -532,13 +532,17 @@ set scrolloff=3                                       " 光标移动到buffer的顶部和
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 
 " 设置字体类型和字体大小
-"set guifont=YaHei_Consolas_Hybrid:h10               " 设置字体:字号（字体名称空格用下划线代替）
-"set guifont=DejaVu_Sans_Mono:h11
-"set guifont=Consolas:h11 " :cANSI
-"set guifont=Inconsolata:h12
-set guifont=Courier_New:h10
-"set guifont=Source_Code_Pro:h10   ":b
-"set guifont=Monospace:h10
+if (g:iswindows)
+    "set guifont=YaHei_Consolas_Hybrid:h10               " 设置字体:字号（字体名称空格用下划线代替）
+    "set guifont=DejaVu_Sans_Mono:h11
+    "set guifont=Consolas:h11 " :cANSI
+    "set guifont=Inconsolata:h12
+    set guifont=Courier_New:h10
+    "set guifont=Source_Code_Pro:h10   ":b
+    "set guifont=Monospace:h10
+else
+    "set guifont=Monospace:h10
+endif
 
 
 
