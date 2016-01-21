@@ -1,10 +1,6 @@
 " =============================================================================
-"        << 判断操作系统是 Windows 还是 Linux 和判断是终端还是 Gvim >>
+"        << Detect OS is Windows or Linux, and open vim in cmd or GUI? >>
 " =============================================================================
-
-" -----------------------------------------------------------------------------
-"  < 判断操作系统是否是 Windows 还是 Linux >
-" -----------------------------------------------------------------------------
 let g:iswindows = 0
 let g:islinux = 0
 if(has("win32") || has("win64") || has("win95") || has("win16"))
@@ -13,9 +9,6 @@ else
     let g:islinux = 1
 endif
 
-" -----------------------------------------------------------------------------
-"  < 判断是终端还是 Gvim >
-" -----------------------------------------------------------------------------
 if has("gui_running")
     let g:isGUI = 1
 else
@@ -100,7 +93,7 @@ endif
 " =============================================================================
 
 " -----------------------------------------------------------------------------
-"  < Vundle 插件管理工具配置 >
+"  < Vundle plugin manger configuration >
 " -----------------------------------------------------------------------------
 " 用于更方便的管理vim插件，具体用法参考 :h vundle 帮助
 " 安装方法为在终端输入如下命令
@@ -259,7 +252,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 if (g:iswindows)
-    let g:syntastic_cpp_include_dirs = ['D:\\cygwin\\usr\\include']
+    let g:syntastic_cpp_include_dirs = ['C:\\cygwin\\usr\\include']
 else
     let g:syntastic_cpp_include_dirs = ['/usr/include/']
 endif
