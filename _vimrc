@@ -123,6 +123,7 @@ Bundle 'gmarik/vundle'
 " 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
 Bundle 'a.vim'
 Bundle 'Align'
+Bundle 'NLKNguyen/copy-cut-paste.vim'
 Bundle 'kien/ctrlp.vim'
 "Bundle 'Mark--Karkat'
 Bundle 'jiangmiao/auto-pairs'
@@ -208,6 +209,19 @@ nmap <F9> <Esc>:!ctags -R *<CR>
 
 " 快捷键F8代开Tlist
 nmap <F8> <Esc>:Tlist <CR>
+
+""""""""""""""""""""""""""""""
+" copy_cut_paste.vim
+""""""""""""""""""""""""""""""
+let g:copy_cut_paste_no_mappings = 1
+" Use your keymap
+nmap QC <Plug>CCP_CopyLine
+vmap QC <Plug>CCP_CopyText
+
+nmap QX <Plug>CCP_CutLine
+vmap QX <Plug>CCP_CutText
+
+nmap QV <Plug>CCP_PasteText
 
 """"""""""""""""""""""""""""""
 " winManager
