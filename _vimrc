@@ -286,15 +286,18 @@ let g:syntastic_enable_balloons = 1
 " -----------------------------------------------------------------------------
 " 以下文件格式上屏蔽 YCM
 let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'gitcommit' : 1,
-      \}
+    \ 'tagbar' : 1,
+    \ 'qf' : 1,
+    \ 'notes' : 1,
+    \ 'markdown' : 1,
+    \ 'unite' : 1,
+    \ 'text' : 1,
+    \ 'vimwiki' : 1,
+    \ 'gitcommit' : 1,
+    \ 'txt' : 1,
+    \ 'ini' : 1,
+    \ 'dat' : 1,
+    \}
 
 " let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
