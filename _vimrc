@@ -546,9 +546,18 @@ set scrolloff=3                                       " 光标移动到buffer的顶部和
 "set guifont=DejaVu_Sans_Mono:h11
 "set guifont=Consolas:h11 " :cANSI
 "set guifont=Inconsolata:h12
-set guifont=Courier_New:h10
 "set guifont=Source_Code_Pro:h10   ":b
 "set guifont=Monospace:h10
+
+if g:iswindows
+    set guifont=Courier_New:h10
+endif
+
+if g:islinux
+    set gfn=Source\ Code\ Pro\ 10,Bitstream\ Vera\ Sans\ Mono\ 10
+    "set guifontwide=WenQuanYi\ Zen\ Hei\ 10
+endif
+
 
 
 
