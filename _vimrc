@@ -104,8 +104,12 @@ endif
 " git clone https://github.com/gmarik/vundle "C:\Program Files\Vim\vimfiles\bundle\vundle" 
 " 
 " If you want to put vim in C disk root dir, you can use bundle install command below:
+"
+" gmarik/vundle manage bundle cmd
 " git clone https://github.com/gmarik/vundle "C:\Vim\vimfiles\bundle\vundle" 
 "
+" VundleVim/Vundle.vim manage bundle cmd
+"git clone https://github.com/VundleVim/Vundle.vim.git c:/Vim/vimfiles/bundle/vundle
 set nocompatible                     " 禁用 Vi 兼容模式
 filetype off                         " 禁用文件类型侦测
 
@@ -118,7 +122,8 @@ else
 endif
 
 " 使用Vundle来管理Vundle，这个必须要有。
-Bundle 'gmarik/vundle'
+"Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
 Bundle 'a.vim'
@@ -134,7 +139,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'taglist.vim'
 Bundle 'vim-scripts/winmanager'
 "Bundle 'Shougo/neocomplete.vim'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-powerline'
 "Bundle 'yonchu/accelerated-smooth-scroll'
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -167,12 +172,15 @@ Plugin 'flazz/vim-colorschemes'
 "Bundle 'cSyntaxAfter'
 "Bundle 'javacomplete'
 "Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
+Plugin 'artur-shaik/vim-javacomplete2'
 "Bundle 'mattn/emmet-vim'
 "Bundle 'fholgado/minibufexpl.vim'         "好像与 Vundle 插件有一些冲突
 "Bundle 'Shougo/neocomplcache.vim'
 "Bundle 'repeat.vim'
 "Bundle 'TxtBrowser'
 "Plugin 'exvim/ex-minibufexpl'                "exvim插件之一。修复BUG
+"Plugin 'sukima/xmledit'                 " Linux xml edit
+Plugin 'othree/xml.vim'
 
 " =============================================================================
 "                          << 以下为常用插件配置 >>
@@ -422,6 +430,50 @@ let g:pymode_folding = 0
 "  < tabular 插件配置 >
 " -----------------------------------------------------------------------------
 ":let g:tabular_loaded = 1
+
+" -----------------------------------------------------------------------------
+" vim-scripts/vim-javacompleteex
+" -----------------------------------------------------------------------------
+"let g:JavaCompleteEx_JavaHome   # $JAVA_HOME
+"let g:JavaCompleteEx_ClassPath  # $CLASSPATH
+
+"set omnifunc=javacomplete_ex#Complete
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+
+nmap <leader>jI <Plug>(JavaComplete-Imports-AddMissing)
+nmap <leader>jR <Plug>(JavaComplete-Imports-RemoveUnused)
+nmap <leader>ji <Plug>(JavaComplete-Imports-AddSmart)
+nmap <leader>jii <Plug>(JavaComplete-Imports-Add)
+
+imap <C-j>I <Plug>(JavaComplete-Imports-AddMissing)
+imap <C-j>R <Plug>(JavaComplete-Imports-RemoveUnused)
+imap <C-j>i <Plug>(JavaComplete-Imports-AddSmart)
+imap <C-j>ii <Plug>(JavaComplete-Imports-Add)
+
+nmap <leader>jM <Plug>(JavaComplete-Generate-AbstractMethods)
+
+imap <C-j>jM <Plug>(JavaComplete-Generate-AbstractMethods)
+
+nmap <leader>jA <Plug>(JavaComplete-Generate-Accessors)
+nmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
+nmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
+nmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
+nmap <leader>jts <Plug>(JavaComplete-Generate-ToString)
+nmap <leader>jeq <Plug>(JavaComplete-Generate-EqualsAndHashCode)
+nmap <leader>jc <Plug>(JavaComplete-Generate-Constructor)
+nmap <leader>jcc <Plug>(JavaComplete-Generate-DefaultConstructor)
+
+imap <C-j>s <Plug>(JavaComplete-Generate-AccessorSetter)
+imap <C-j>g <Plug>(JavaComplete-Generate-AccessorGetter)
+imap <C-j>a <Plug>(JavaComplete-Generate-AccessorSetterGetter)
+
+vmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
+vmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
+vmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
 
 " -----------------------------------------------------------------------------
 "  < 编码配置 >
