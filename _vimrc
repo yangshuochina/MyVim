@@ -126,30 +126,41 @@ endif
 Plugin 'VundleVim/Vundle.vim'
 
 " 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
+
+" ----------------
+"       GIT
+" ----------------
+"Bundle 'airblade/vim-gitgutter'
+Bundle 'tpope/vim-fugitive'
+
 Bundle 'a.vim'
+
+" Align code
+Bundle 'junegunn/vim-easy-align'
 Bundle 'Align'
+
+
 Bundle 'NLKNguyen/copy-cut-paste.vim'
 Bundle 'kien/ctrlp.vim'
 "Bundle 'Mark--Karkat'
 Bundle 'jiangmiao/auto-pairs'
-Bundle 'OmniCppComplete'
+"Bundle 'OmniCppComplete'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'taglist.vim'
 Bundle 'vim-scripts/winmanager'
 "Bundle 'Shougo/neocomplete.vim'
-"Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-powerline'
 "Bundle 'yonchu/accelerated-smooth-scroll'
 Bundle 'nathanaelkane/vim-indent-guides'
-"Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-fugitive'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'klen/python-mode'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'godlygeek/tabular'
 Plugin 'flazz/vim-colorschemes'
 " Plugin 'jeaye/color_coded'
+Bundle 'Valloric/YouCompleteMe'
 
 "Plugin 'ervandew/supertab'                 "有时与 snipmate 插件冲突(YCM具备这个功能)
 "Plugin 'garbas/vim-snipmate'               " forked from msanders/snipmate.vim
@@ -172,7 +183,7 @@ Plugin 'flazz/vim-colorschemes'
 "Bundle 'cSyntaxAfter'
 "Bundle 'javacomplete'
 "Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
-Plugin 'artur-shaik/vim-javacomplete2'
+"Plugin 'artur-shaik/vim-javacomplete2'
 "Bundle 'mattn/emmet-vim'
 "Bundle 'fholgado/minibufexpl.vim'         "好像与 Vundle 插件有一些冲突
 "Bundle 'Shougo/neocomplcache.vim'
@@ -181,6 +192,7 @@ Plugin 'artur-shaik/vim-javacomplete2'
 "Plugin 'exvim/ex-minibufexpl'                "exvim插件之一。修复BUG
 "Plugin 'sukima/xmledit'                 " Linux xml edit
 Plugin 'othree/xml.vim'
+Plugin 'groovy.vim'
 
 " =============================================================================
 "                          << 以下为常用插件配置 >>
@@ -381,6 +393,9 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+
+" Easy align interactive
+vnoremap <silent> <Enter> :EasyAlign<cr>
 
 " -----------------------------------------------------------------------------
 "  < Python-mode 插件配置 >
@@ -602,7 +617,8 @@ set scrolloff=3                                       " 光标移动到buffer的顶部和
 "set guifont=Monospace:h10
 
 if g:iswindows
-    set guifont=Courier_New:h10
+    "set guifont=Consolas:h12
+    set guifont=Source_Code_Pro:h12:b
 endif
 
 if g:islinux
@@ -624,8 +640,11 @@ if g:isGUI
     set lines=38 columns=120                          " 指定窗口大小，lines为高度，columns为宽度
 endif
 
+"================================================================
 " 设置代码配色方案
+"================================================================
 "let g:solarized_termcolors=256
+let g:solarized_italic=0
 if g:isGUI
     "Gvim配色方案
     "set background=light
@@ -634,12 +653,12 @@ if g:isGUI
     "colorscheme Tomorrow-Night-Eighties               
     "colorscheme molikai
     "colorscheme desert
-    "colorscheme solarized
+    colorscheme solarized
     "colorscheme blue
     "colorscheme darkblue
     "color ron
     "color evening
-    color biogoo
+    "color biogoo
 else 
     "终端配色方案
     "set background=light
