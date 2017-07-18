@@ -193,6 +193,8 @@ Bundle 'Valloric/YouCompleteMe'
 "Plugin 'sukima/xmledit'                 " Linux xml edit
 Plugin 'othree/xml.vim'
 Plugin 'groovy.vim'
+Plugin 'fatih/vim-go'
+Bundle 'bronson/vim-trailing-whitespace'
 
 " =============================================================================
 "                          << 以下为常用插件配置 >>
@@ -561,6 +563,11 @@ imap <c-l> <Right>
 
 " 启用每行超过80列的字符提示（字体变蓝并加下划线），不启用就注释掉
 " au BufWinEnter * let w:m2=matchadd('Underlined', '\%>' . 80 . 'v.\+', -1)
+if (exists('+colorcolumn'))
+    set colorcolumn=80
+    highlight ColorColumn ctermbg=9
+endif
+
 "------------------------------自定义操作-----------------------------------------------
 " 替换函数。参数说明：
 " confirm：是否替换前逐一确认
@@ -609,16 +616,16 @@ set scrolloff=3                                       " 光标移动到buffer的顶部和
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 
 " 设置字体类型和字体大小
-"set guifont=YaHei_Consolas_Hybrid:h10               " 设置字体:字号（字体名称空格用下划线代替）
-"set guifont=DejaVu_Sans_Mono:h11
-"set guifont=Consolas:h11 " :cANSI
-"set guifont=Inconsolata:h12
-"set guifont=Source_Code_Pro:h10   ":b
-"set guifont=Monospace:h10
 
 if g:iswindows
-    "set guifont=Consolas:h12
-    set guifont=Source_Code_Pro:h12:b
+    "set guifont=YaHei_Consolas_Hybrid:h10               " 设置字体:字号（字体名称空格用下划线代替）
+    "set guifont=DejaVu_Sans_Mono:h11
+    "set guifont=Consolas:h11 " :cANSI
+    "set guifont=Inconsolata:h12
+    "set guifont=Monospace:h10
+    "set guifont=Consolas:h12:b
+    set guifont=Courier_New:h11 ":b
+    "set guifont=Source_Code_Pro:h12:b
 endif
 
 if g:islinux
@@ -627,45 +634,43 @@ if g:islinux
 endif
 
 
-
-
 set nowrap                                            " 设置不自动换行
 set shortmess=atI                                     " 去掉欢迎界面
 " set gcr=a:block-blinkon0                            " 禁止光标闪烁
 
 " 设置 gVim 窗口初始位置及大小
 if g:isGUI
-    au GUIEnter * simalt ~x                           " 窗口启动时自动最大化
-    winpos 100 10                                     " 指定窗口出现的位置，坐标原点在屏幕左上角
+    "au GUIEnter * simalt ~x                           " 窗口启动时自动最大化
+    winpos 160 90                                     " 指定窗口出现的位置，坐标原点在屏幕左上角
     set lines=38 columns=120                          " 指定窗口大小，lines为高度，columns为宽度
 endif
 
 "================================================================
 " 设置代码配色方案
 "================================================================
-"let g:solarized_termcolors=256
+let g:solarized_termcolors=56
 let g:solarized_italic=0
 if g:isGUI
     "Gvim配色方案
-    "set background=light
+   " set background=light
     set background=dark
 
-    "colorscheme Tomorrow-Night-Eighties               
+    "colorscheme Tomorrow-Night-Eighties
     "colorscheme molikai
     "colorscheme desert
-    colorscheme solarized
+    "colorscheme solarized
     "colorscheme blue
     "colorscheme darkblue
     "color ron
     "color evening
-    "color biogoo
-else 
+    color biogoo
+else
     "终端配色方案
     "set background=light
     set background=dark
 
     colorscheme solarized
-    "colorscheme Tomorrow-Night-Eighties              
+    "colorscheme Tomorrow-Night-Eighties
 endif
 
 
