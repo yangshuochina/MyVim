@@ -141,7 +141,7 @@ Bundle 'Align'
 
 
 Bundle 'NLKNguyen/copy-cut-paste.vim'
-Bundle 'kien/ctrlp.vim'
+"Bundle 'kien/ctrlp.vim'  " This project is unmaintained
 "Bundle 'Mark--Karkat'
 Bundle 'jiangmiao/auto-pairs'
 "Bundle 'OmniCppComplete'
@@ -179,7 +179,7 @@ Bundle 'Valloric/YouCompleteMe'
 "Bundle 'ZoomWin'
 "Bundle 'tpope/vim-markdown'
 "Plugin 'shawncplus/phpcomplete.vim'
-"Bundle 'ctrlpvim/ctrlp.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
 "Bundle 'cSyntaxAfter'
 "Bundle 'javacomplete'
 "Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
@@ -199,6 +199,11 @@ Bundle 'bronson/vim-trailing-whitespace'
 " =============================================================================
 "                          << 以下为常用插件配置 >>
 " =============================================================================
+" -----------------------------------------------------------------------------
+"  < ctrlp.vim 插件配置 >
+" -----------------------------------------------------------------------------
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " -----------------------------------------------------------------------------
 "  < a.vim 插件配置 >
@@ -385,9 +390,10 @@ map <F2> :NERDTreeToggle<CR>
 " -----------------------------------------------------------------------------
 "  < vim-nerdtree-tabs 插件配置 >
 " -----------------------------------------------------------------------------
-let g:nerdtree_tabs_open_on_console_startup=0       "设置打开vim的时候默认打开目录树
-"map <leader>n <plug>NERDTreeTabsToggle <CR>         "设置打开目录树的快捷键
-let g:nerdtree_tabs_open_on_gui_startup = 0
+let g:nerdtree_tabs_open_on_console_startup=1   "设置打开vim的时候默认打开目录树
+map <leader>t  :NERDTreeTabsToggle<CR>    "设置打开目录树的快捷键
+let g:nerdtree_tabs_open_on_gui_startup = 1
+
 " -----------------------------------------------------------------------------
 
 "  < snipmate 插件配置 >
