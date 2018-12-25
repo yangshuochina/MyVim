@@ -158,9 +158,11 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'klen/python-mode'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'flazz/vim-colorschemes'
 " Plugin 'jeaye/color_coded'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'skywind3000/asyncrun.vim'
 
 "Plugin 'ervandew/supertab'                 "有时与 snipmate 插件冲突(YCM具备这个功能)
 "Plugin 'garbas/vim-snipmate'               " forked from msanders/snipmate.vim
@@ -462,11 +464,26 @@ let g:pymode_folding = 0
 
 "set omnifunc=javacomplete_ex#Complete
 
+" -----------------------------------------------------------------------------
+"  < javacomplete2 插件配置 >
+" -----------------------------------------------------------------------------
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
+" To enable smart (trying to guess import option) inserting
+" class imports with F4
 nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
 imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
 
+"To enable usual (will ask for import option) inserting class imports with F5
+"nmap <F5> <Plug>(JavaComplete-Imports-Add)
+"imap <F5> <Plug>(JavaComplete-Imports-Add)
+"To add all missing imports with F6
+"nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"To remove all unused imports with F7
+"nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+"imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+"Default mappings
 nmap <leader>jI <Plug>(JavaComplete-Imports-AddMissing)
 nmap <leader>jR <Plug>(JavaComplete-Imports-RemoveUnused)
 nmap <leader>ji <Plug>(JavaComplete-Imports-AddSmart)
@@ -646,7 +663,7 @@ set shortmess=atI                                     " 去掉欢迎界面
 
 " 设置 gVim 窗口初始位置及大小
 if g:isGUI
-    "au GUIEnter * simalt ~x                           " 窗口启动时自动最大化
+    au GUIEnter * simalt ~x                           " 窗口启动时自动最大化
     winpos 160 90                                     " 指定窗口出现的位置，坐标原点在屏幕左上角
     set lines=38 columns=120                          " 指定窗口大小，lines为高度，columns为宽度
 endif
