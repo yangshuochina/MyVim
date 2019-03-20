@@ -99,14 +99,14 @@ endif
 " 安装方法为在终端输入如下命令
 " git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 " 如果想在 windows 安装就必需先安装 "git for window"，可查阅网上资料
-" 
+"
 " 安装bundle命令：
-" git clone https://github.com/gmarik/vundle "C:\Program Files\Vim\vimfiles\bundle\vundle" 
-" 
+" git clone https://github.com/gmarik/vundle "C:\Program Files\Vim\vimfiles\bundle\vundle"
+"
 " If you want to put vim in C disk root dir, you can use bundle install command below:
 "
 " gmarik/vundle manage bundle cmd
-" git clone https://github.com/gmarik/vundle "C:\Vim\vimfiles\bundle\vundle" 
+" git clone https://github.com/gmarik/vundle "C:\Vim\vimfiles\bundle\vundle"
 "
 " VundleVim/Vundle.vim manage bundle cmd
 "git clone https://github.com/VundleVim/Vundle.vim.git c:/Vim/vimfiles/bundle/vundle
@@ -214,7 +214,7 @@ let g:ctrlp_cmd = 'CtrlP'
 " :A     ---切换头文件并独占整个窗口
 " :AV    ---切换头文件并垂直分割窗口
 " :AS    ---切换头文件并水平分割窗口
-nnoremap <silent> <F12> :A<CR> 
+nnoremap <silent> <F12> :A<CR>
 
 """"""""""""""""""""""""""""""
 " Tag list (ctags)
@@ -227,14 +227,14 @@ endif
 
 let Tlist_Show_One_File = 1             " 不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow = 1           " 如果taglist窗口是最后一个窗口，则退出vim
-let Tlist_Use_Right_Window = 1          " 在右侧窗口中显示taglist窗口 
+let Tlist_Use_Right_Window = 1          " 在右侧窗口中显示taglist窗口
 " let Tlist_Auto_Open = 1		" 自动打开Tlist
 
 set tags=tags;				" 自动从当前目录查找tags
 set autochdir 				" 自动依次从上层目录查找
 
 " 快捷键F9生成一个tags文件
-nmap <F9> <Esc>:!ctags -R *<CR> 
+nmap <F9> <Esc>:!ctags -R *<CR>
 
 " 快捷键F8代开Tlist
 nmap <F8> <Esc>:Tlist <CR>
@@ -330,39 +330,39 @@ let g:ycm_filetype_blacklist = {
 
 " let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
-" 补全功能在注释中同样有效  
-let g:ycm_complete_in_comments=1 
+" 补全功能在注释中同样有效
+let g:ycm_complete_in_comments=1
 
-" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示 
-let g:ycm_confirm_extra_conf=0      
+" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
+let g:ycm_confirm_extra_conf=0
 
-" 开启 YCM 基于标签引擎 
-let g:ycm_collect_identifiers_from_tags_files=1  
+" 开启 YCM 基于标签引擎
+let g:ycm_collect_identifiers_from_tags_files=1
 
 " 引入 C++ 标准库tags，这个没有也没关系，
-" 只要.ycm_extra_conf.py文件中指定了正确的标准库路径  
-set tags+=/data/misc/software/misc./vim/stdcpp.tags  
+" 只要.ycm_extra_conf.py文件中指定了正确的标准库路径
+set tags+=/data/misc/software/misc./vim/stdcpp.tags
 
-" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键  
-inoremap <leader>; <C-x><C-o>  
+" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
+inoremap <leader>; <C-x><C-o>
 
-" 补全内容不以分割子窗口形式出现，只显示补全列表  
-set completeopt-=preview  
+" 补全内容不以分割子窗口形式出现，只显示补全列表
+set completeopt-=preview
 
-" 从第一个键入字符就开始罗列匹配项  
-let g:ycm_min_num_of_chars_for_completion=1  
+" 从第一个键入字符就开始罗列匹配项
+let g:ycm_min_num_of_chars_for_completion=1
 
-" 禁止缓存匹配项，每次都重新生成匹配项  
-let g:ycm_cache_omnifunc=0  
+" 禁止缓存匹配项，每次都重新生成匹配项
+let g:ycm_cache_omnifunc=0
 
-" 语法关键字补全              
-let g:ycm_seed_identifiers_with_syntax=1  
+" 语法关键字补全
+let g:ycm_seed_identifiers_with_syntax=1
 
-" 修改对C函数的补全快捷键，默认是CTRL + space，修改为ALT + ;  
-let g:ycm_key_invoke_completion = '<M-;>'  
+" 修改对C函数的补全快捷键，默认是CTRL + space，修改为ALT + ;
+let g:ycm_key_invoke_completion = '<M-;>'
 
-" 设置转到定义处的快捷键为ALT + G，这个功能非常赞  
-nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>  
+" 设置转到定义处的快捷键为ALT + G，这个功能非常赞
+nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>
 
 " -----------------------------------------------------------------------------
 "  < PowerLine 插件配置 >
@@ -392,9 +392,9 @@ map <F2> :NERDTreeToggle<CR>
 " -----------------------------------------------------------------------------
 "  < vim-nerdtree-tabs 插件配置 >
 " -----------------------------------------------------------------------------
-let g:nerdtree_tabs_open_on_console_startup=1   "设置打开vim的时候默认打开目录树
+let g:nerdtree_tabs_open_on_console_startup = 0   "设置打开vim的时候默认打开目录树
 map <leader>t  :NERDTreeTabsToggle<CR>    "设置打开目录树的快捷键
-let g:nerdtree_tabs_open_on_gui_startup = 1
+let g:nerdtree_tabs_open_on_gui_startup = 0
 
 " -----------------------------------------------------------------------------
 
@@ -631,16 +631,17 @@ nnoremap <Leader>rwc :call Replace(1, 1, input('Replace '.expand('<cword>').' wi
 "  < 界面配置 >
 " -----------------------------------------------------------------------------
 set number                                            " 显示行号
+set relativenumber                                    " 显示相对行号
 set laststatus=2                                      " 启用状态栏信息
 set cmdheight=2                                       " 设置命令行的高度为2，默认为1
 set cursorline                                        " 突出显示当前行
 
 set ruler                                             " 显示标尺
 set showcmd                                           " 输入的命令显示出来，看的清楚些
-set scrolloff=3                                       " 光标移动到buffer的顶部和底部时保持3行距离 
+set scrolloff=3                                       " 光标移动到buffer的顶部和底部时保持3行距离
 
 " Use PowerLine plugin, so ignore following settings.
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容
 
 " 设置字体类型和字体大小
 
@@ -752,7 +753,7 @@ set wrap "Wrap lines
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -765,18 +766,18 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""新文件标题
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"新建.c,.h,.sh,.java文件，自动插入文件头 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetTitle()" 
-""定义函数SetTitle，自动插入文件头 
-func SetTitle() 
-	"如果文件类型为.sh文件 
-	if &filetype == 'sh' 
-		call setline(1,"\#!/bin/bash") 
-		call append(line("."), "") 
+"新建.c,.h,.sh,.java文件，自动插入文件头
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetTitle()"
+""定义函数SetTitle，自动插入文件头
+func SetTitle()
+	"如果文件类型为.sh文件
+	if &filetype == 'sh'
+		call setline(1,"\#!/bin/bash")
+		call append(line("."), "")
     elseif &filetype == 'python'
         call setline(1,"#!/usr/bin/env python")
         call append(line("."),"# coding=utf-8")
-	    call append(line(".")+1, "") 
+	    call append(line(".")+1, "")
 
     elseif &filetype == 'ruby'
         call setline(1,"#!/usr/bin/env ruby")
@@ -785,13 +786,13 @@ func SetTitle()
 
 "    elseif &filetype == 'mkd'
 "        call setline(1,"<head><meta charset=\"UTF-8\"></head>")
-	else 
-		call setline(1, "/*************************************************************************") 
-		call append(line("."), "	> File Name: ".expand("%")) 
-		call append(line(".")+1, "	> Author: ") 
-		call append(line(".")+2, "	> Mail: ") 
-		call append(line(".")+3, "	> Created Time: ".strftime("%c")) 
-		call append(line(".")+4, " ************************************************************************/") 
+	else
+		call setline(1, "/*************************************************************************")
+		call append(line("."), "	> File Name: ".expand("%"))
+		call append(line(".")+1, "	> Author: ")
+		call append(line(".")+2, "	> Mail: ")
+		call append(line(".")+3, "	> Created Time: ".strftime("%c"))
+		call append(line(".")+4, " ************************************************************************/")
 		call append(line(".")+5, "")
 	endif
 	if expand("%:e") == 'cpp'
@@ -813,7 +814,7 @@ func SetTitle()
 		call append(line(".")+7,"")
 	endif
 	"新建文件后，自动定位到文件末尾
-endfunc 
+endfunc
 autocmd BufNewFile * normal G
 
 
@@ -822,7 +823,7 @@ autocmd BufNewFile * normal G
 " -----------------------------------------------------------------------------
 "  < PC_LINT 配置 >
 " -----------------------------------------------------------------------------
-"set efm=%f\ \ %l\ \ %c\ \ %m 
+"set efm=%f\ \ %l\ \ %c\ \ %m
 
 " map f4 to run lint
 "map <f4> :call LintProject()<cr>
@@ -835,7 +836,7 @@ autocmd BufNewFile * normal G
 "    exec 'silent r! lint-nt c:\lint\vim\std.lnt *.c -b'
 
     "remove blank line at the top of the file
-"    exe "normal ggdd"       
+"    exe "normal ggdd"
 "    caddb "add content of the buffer to the quickfix window
 "    close "close the buffer
 "    copen "open quickfix window
@@ -854,8 +855,8 @@ func! CompileRunGcc()
     	elseif &filetype == 'cpp'
 		    exec "!g++ % -o %<"
 	    	exec "!time ./%<"
-    	elseif &filetype == 'java' 
-	    	exec "!javac %" 
+    	elseif &filetype == 'java'
+	    	exec "!javac %"
 	    	exec "!time java %<"
     	elseif &filetype == 'sh'
 	    	:!time bash %
@@ -877,8 +878,8 @@ func! CompileRunGcc()
     	elseif &filetype == 'cpp'
 		    exec "!g++ % -o %<"
 	    	exec "!time ./%<"
-    	elseif &filetype == 'java' 
-	    	exec "!javac %" 
+    	elseif &filetype == 'java'
+	    	exec "!javac %"
 	    	exec "!time java %<"
     	elseif &filetype == 'sh'
 	    	:!time bash %
